@@ -8,7 +8,7 @@ import CardSix from './CardSix';
 import './Main.scss'
 import Snake from './Snake';
 import Food from './Food';
-import phoneHand from '../../assets/phone.png';
+// import phoneHand from '../../assets/phone.png';
 
 
 
@@ -27,33 +27,30 @@ import phoneHand from '../../assets/phone.png';
   // return [test]
 // }
 
-let randomIndex = Math.floor(Math.random() * 7)
+
+const getFood = () => {
+let randomIndex = Math.floor(Math.random() * 6)
 const coordinates = [
   [10, 15],
-  [10, 27],
+  [10, 37],
   [10, 59],
   [88, 15],
-  [88, 27],
+  [88, 37],
   [88, 59]
 ];
+return (coordinates[randomIndex])
+// let randomArray = coordinates[randomIndex]
+// return randomArray
+}
 
-let randomArray = coordinates[randomIndex]
-console.log(randomArray)
-
-
-// let min = coordinates[0];
-// let max = coordinates[5];
-
-// let randomFood = () => {
-//   return Math.floor(Math.random() * coordinates.length) 
-// } 
+console.log(getFood())
 
 
 class Main extends React.Component {
 
   state = {
     // food: foodTada(),
-    food: randomArray,
+    food: getFood(),
     speed: 200,
       direction: 'RIGHT',
       snakeDots: [
@@ -62,7 +59,7 @@ class Main extends React.Component {
       ]
   }
 
-
+  
 
   componentDidMount() {
     setInterval(this.moveSnake, this.state.speed);
@@ -73,6 +70,7 @@ class Main extends React.Component {
   componentDidUpdate() {
     this.checkIfOutOfBorders();
     this.checkIfCollapsed();
+    this.checkIfEat();
   }
 
   onKeyDown = (e) => {
@@ -140,12 +138,14 @@ checkIfCollapsed() {
 }
 
 checkIfEat() {
-  let head = this.state.snakeDots(this.state.snakeDots.length-1);
+  let head = this.state.snakeDots[this.state.snakeDots.length - 1];
   let food = this.state.food;
-  if (head[0] === food[0] && head[1] === food[1]) {
+  if (head[0] == food[0] && head[1] == food[1]) {
     this.setState({
-    food: [0,1]
+    food: getFood()
+    
     })
+    console.log(this.state.food)
     this.enlargeSnake();
     this.increaseSpeed();
   }
