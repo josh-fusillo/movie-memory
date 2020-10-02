@@ -13,8 +13,8 @@ let randomID = Math.floor(Math.random() * (+max - +min) + +min);
 
 export default class MainGame extends Component {
     state = {
-        randomQuote: "",
-      
+        randomImage: "",
+        movieTitle: ""
     }   
 
     generateMovie = () => {
@@ -24,7 +24,8 @@ export default class MainGame extends Component {
                 const posterPath = res.data.poster_path
                 const baseURL = `https://image.tmdb.org/t/p/w500${posterPath}`
                 this.setState({
-                    randomQuote: baseURL
+                    randomImage: baseURL,
+                    movieTitle: res.data.title
                 })                
                
             })
@@ -43,25 +44,41 @@ export default class MainGame extends Component {
 
 
     render() {
-
-       
-        
         return (
-           
-                <div className="flip-card">
-                    <div className="flip-card-inner">
-                        <div className="flip-card-front">
+            <>
+            <section className="card">
 
-                        </div>
-                        <div className="flip-card-back">
-                            <img className="movie__one"src={this.state.randomQuote} alt='whatever' />
-
-                        </div>
+              <div className="card__flip">
+                <div className="card__flip--inner">
+                    <div className="card__flip--front" />  
+                                        
+                    <div className="card__flip--back">
+                      <img className="card__movie" src={this.state.randomImage} alt={this.state.movieTitle} />
+                    </div>
+                        
                     </div>
                 </div>
-              
+{/*                 
+                <div className="movie">
+                  <form>
+                    <input className="movie__form" type="text" placeholder="Write the movie title here"></input>
+                  </form>
+                </div> */}
 
+            </section> 
+            </>
+                // <div className="flip-card">
+                //     <div className="flip-card-inner">
+                //         <div className="flip-card-front">
 
+                //         </div>
+                //         <div className="flip-card-back">
+                //             <img className="movie__one"src={this.state.randomQuote} alt='whatever' />
+
+                //         </div>
+                //     </div>
+                // </div>
+            
         )
     }
 }

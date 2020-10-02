@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 const apiKEY ="8918eb7a7f8e0c7f4ab64f17b93a62d9";
 
 let min=470; 
-let max=900;  
+let max=900; 
 let randomID = Math.floor(Math.random() * (+max - +min) + +min);
 
 
@@ -15,6 +15,7 @@ export default class MainGame extends Component {
     state = {
         randomImage: "",
         movieTitle: ""
+      
     }   
 
     generateMovie = () => {
@@ -26,7 +27,9 @@ export default class MainGame extends Component {
                 this.setState({
                     randomImage: baseURL,
                     movieTitle: res.data.title
-                })                
+
+                })  
+                console.log(res.data.title)              
                
             })
            
@@ -44,8 +47,11 @@ export default class MainGame extends Component {
 
 
     render() {
+
+       
+        
         return (
-            <>
+           <>
             <section className="card">
 
               <div className="card__flip">
@@ -66,20 +72,26 @@ export default class MainGame extends Component {
                 </div> */}
 
             </section> 
-            </>
-            
-                // <div className="flip-card">
-                //     <div className="flip-card-inner">
-                //         <div className="flip-card-front">
 
-                //         </div>
-                //         <div className="flip-card-back">
-                //             <img className="movie__one"src={this.state.randomQuote} alt='whatever' />
+                {/* <section className="section__wrapper">
+                <div className="flip-card">
+                    <div className="flip-card-inner">
+                        <div className="flip-card-front" />                       
+                        <div className="flip-card-back">
+                            <img className="movie__one" src={this.state.randomImage} alt={this.state.movieTitle} />
 
-                //         </div>
-                //     </div>
-                // </div>
-              
+                        </div>
+                        
+                    </div>
+                </div>
+                <div className="form">
+                <form>
+                    <input className="movie__form" type="text" placeholder="Write the movie title here"></input>
+                </form>
+
+                </div>
+                </section>  */}
+              </>
 
 
         )
