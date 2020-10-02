@@ -34,6 +34,7 @@ body {
     height: 300px;
     perspective: 1000px;
     border-radius: .75rem;
+    animation: glowing-two 1300ms infinite; 
   }
   
   .flip-card-inner {
@@ -91,19 +92,61 @@ body {
       color: mediumspringgreen;
   }
 
+  h2 {
+      color: white
+  }
+
   .button-holder {
       display: flex;
       justify-content: space-between;
+      margin-top: 4rem;
   }
 
   .buttons {
       margin: 0 1rem;
-      height: 50px;
+      height: 100px;
       width: 100px;
       color: magenta;
-     
+      animation: glowing 1300ms infinite;  
       padding: 1rem 2rem;
       background-color: blue;
       border-radius: .75rem;
 
   }
+
+  .hover__flex {
+      display: flex;
+      justify-content: space-evenly;
+  }
+
+  @keyframes glowing {
+    0% {
+      background-color: #2ba805;
+      box-shadow: 0 0 3px #2ba805;
+    }
+    50% {
+      background-color: #49e819;
+      box-shadow: 0 0 10px #49e819;
+    }
+    100% {
+      background-color: #2ba805;
+      box-shadow: 0 0 3px #2ba805;
+    }
+  }
+
+  @keyframes glowing-two {
+    0% {
+      background-color: indianred;
+      box-shadow: 0 0 3px indianred;
+    }
+    50% {
+      background-color: magenta;
+      box-shadow: 0 0 10px magenta;
+    }
+    100% {
+      background-color: black;
+      box-shadow: 0 0 3px black;
+    }
+  }
+
+  

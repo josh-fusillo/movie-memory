@@ -12,22 +12,6 @@ import Food from './Food';
 
 
 
-// movie name and image comes up, have to move to that movie and snake will grow longer.
-// when the movie is hit correctly, page refreshes/restarts to generate new goal movie and 
-// random set of cards but the snake will not refresh until its game over. 
-// if snake touches movie that is not current movie, game over
-// let moviesArr = [];
-// need an array of the 6 cards and has to appear in the card
-// where QuestCard movie is in. 
-// const foodTada = () => {
-//   let min = moviesArr[0];
-//   let max = moviesArr[2];
-  // let test = moviesArr[Math.random() * moviesArr.length];
-  // return moviesArr(Math.random() * (max - min) + min);
-  // return [test]
-// }
-
-
 const getFood = () => {
 let randomIndex = Math.floor(Math.random() * 6)
 const coordinates = [
@@ -39,23 +23,26 @@ const coordinates = [
   [88, 59]
 ];
 return (coordinates[randomIndex])
-// let randomArray = coordinates[randomIndex]
-// return randomArray
+
 }
 
-console.log(getFood())
+
 
 
 class Main extends React.Component {
 
   state = {
-    // food: foodTada(),
+  
     food: getFood(),
     speed: 200,
       direction: 'RIGHT',
       snakeDots: [
         [0,0],
-        [2,0]
+        [2,0],
+        [3,0],
+        [4,0],
+        [5,0],
+        [6,0]
       ]
   }
 
@@ -75,7 +62,7 @@ class Main extends React.Component {
 
   onKeyDown = (e) => {
     e = e || window.event;
-    // eslint-disable-next-line default-case
+  
     switch (e.keyCode) {
         case 38:
           this.setState({direction: 'UP'});
@@ -96,7 +83,7 @@ class Main extends React.Component {
     let dots = [...this.state.snakeDots];
     let head = dots[dots.length -1];
 
-    // eslint-disable-next-line default-case
+   
     switch (this.state.direction) {
       case 'RIGHT':
         head = [head[0] + 2, head[1]];
@@ -174,7 +161,11 @@ onGameOver(){
         direction: 'RIGHT',
         snakeDots: [
           [0,0],
-          [2,0]
+          [2,0],
+          [3,0],
+          [4,0],
+          [5,0],
+          [6,0]
         ]
   })
 }
@@ -182,23 +173,11 @@ onGameOver(){
   render () {
   return (
     <>
-    <div className="main">
-      <div className="main__left">
-        <CardOne />
-        <CardTwo />
-        <CardThree />
-      </div>
-
-      <div className="main__right">
-        <CardFour />
-        <CardFive />
-        <CardSix />
-      </div>
-    </div>
+   
 
     <div className="game-area">
       <Snake snakeDots={this.state.snakeDots}/>
-      <Food dot={this.state.food}/>
+      
     </div>
 
     {/* <div>
