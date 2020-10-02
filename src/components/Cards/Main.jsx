@@ -13,16 +13,21 @@ import Food from './Food';
 
 
 const getFood = () => {
-let randomIndex = Math.floor(Math.random() * 6)
-const coordinates = [
-  [10, 15],
-  [10, 37],
-  [10, 59],
-  [88, 15],
-  [88, 37],
-  [88, 59]
-];
-return (coordinates[randomIndex])
+  let min = 1;
+  let max = 98;
+  let x = Math.floor((Math.random() *(max-min+1)+min)/2)*2;
+  let y = Math.floor((Math.random() *(max-min+1)+min)/2)*2;
+return [x,y]
+// let randomIndex = Math.floor(Math.random() * 6)
+// const coordinates = [
+//   [10, 15],
+//   [10, 37],
+//   [10, 59],
+//   [88, 15],
+//   [88, 37],
+//   [88, 59]
+// ];
+// return (coordinates[randomIndex])
 
 }
 
@@ -34,15 +39,13 @@ class Main extends React.Component {
   state = {
   
     food: getFood(),
-    speed: 200,
+    speed: 100,
       direction: 'RIGHT',
       snakeDots: [
         [0,0],
         [2,0],
         [3,0],
-        [4,0],
-        [5,0],
-        [6,0]
+        [4,0]
       ]
   }
 
@@ -63,6 +66,7 @@ class Main extends React.Component {
   onKeyDown = (e) => {
     e = e || window.event;
   
+    // eslint-disable-next-line default-case
     switch (e.keyCode) {
         case 38:
           this.setState({direction: 'UP'});
@@ -84,6 +88,7 @@ class Main extends React.Component {
     let head = dots[dots.length -1];
 
    
+    // eslint-disable-next-line default-case
     switch (this.state.direction) {
       case 'RIGHT':
         head = [head[0] + 2, head[1]];
@@ -155,9 +160,9 @@ increaseSpeed() {
 }
 
 onGameOver(){
-  // alert(`Game Over. Snake length is ${this.state.snakeDots.length}`)
+  alert(`Game Over. You killed the snake. Snake length is ${this.state.snakeDots.length}. Try again.`)
   this.setState({
-      speed: 200,
+      speed: 100,
         direction: 'RIGHT',
         snakeDots: [
           [0,0],
@@ -177,6 +182,7 @@ onGameOver(){
 
     <div className="game-area">
       <Snake snakeDots={this.state.snakeDots}/>
+      <Food dot={this.state.food}/>
       
     </div>
 

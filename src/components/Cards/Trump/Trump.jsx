@@ -13,8 +13,7 @@ export default class Trump extends Component {
     state = {
         memeGenerator: "",
         count: 0,
-        randomImage: ""
-
+        randomImage: "",
     }
 
     getMeme = () => {
@@ -54,11 +53,19 @@ export default class Trump extends Component {
         );
     };
 
+    onGameOver(){
+        alert('Game Over.');
+    }
+
+
 
     render() {
+
+
         return (
-            <>
+            <> 
                 <h1>Who Loves A Donald Trump Meme?!?!</h1>
+                <button className="question-button" onClick={this.onGameOver}>Not me</button>
                 <div className="hover__flex">
                     <div className="cards">
                         <div className="flip-card">
@@ -107,7 +114,7 @@ export default class Trump extends Component {
 
                                 </div>
                             </div>
-                                <button className="new__meme" onClick={() => window.location.reload()}>Change Faces</button>
+                                <button className="new__meme" onClick={this.onGameOver}>Change Faces</button>
 
                         </div>
                     </div>
