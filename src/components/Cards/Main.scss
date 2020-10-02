@@ -1,4 +1,35 @@
+@import '../../styles/partials/mixins';
+@import '../../styles/partials/variables';
+
+
 .main {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+
+    &__left {
+        display: flex;
+        flex-direction: column;    
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
+
+.phone {
+    display: flex;
+    // justify-content: flex-start;
+    // align-items: flex-start;
+    transform: rotate(90deg);
+    
+    @include mobile {
+        width: 150vw;
+        height: 40vh;
+        margin-left: -108px;
+
+    }
+
+}
+
