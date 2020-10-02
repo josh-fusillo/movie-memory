@@ -27,11 +27,33 @@ import phoneHand from '../../assets/phone.png';
   // return [test]
 // }
 
+let randomIndex = Math.floor(Math.random() * 7)
+const coordinates = [
+  [10, 15],
+  [10, 27],
+  [10, 59],
+  [88, 15],
+  [88, 27],
+  [88, 59]
+];
+
+let randomArray = coordinates[randomIndex]
+console.log(randomArray)
+
+
+// let min = coordinates[0];
+// let max = coordinates[5];
+
+// let randomFood = () => {
+//   return Math.floor(Math.random() * coordinates.length) 
+// } 
+
+
 class Main extends React.Component {
 
   state = {
     // food: foodTada(),
-    food: [0,1],
+    food: randomArray,
     speed: 200,
       direction: 'RIGHT',
       snakeDots: [
@@ -39,6 +61,8 @@ class Main extends React.Component {
         [2,0]
       ]
   }
+
+
 
   componentDidMount() {
     setInterval(this.moveSnake, this.state.speed);
@@ -177,9 +201,9 @@ onGameOver(){
       <Food dot={this.state.food}/>
     </div>
 
-    <div>
+    {/* <div>
       <img src={phoneHand} alt="hand holding phone" className="phone"/>
-    </div>
+    </div> */}
 
     <div></div>
     </>

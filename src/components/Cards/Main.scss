@@ -1,6 +1,10 @@
 @import '../../styles/partials/mixins';
 @import '../../styles/partials/variables';
 
+html {
+    overflow-y: hidden;
+}
+
 
 .main {
     display: flex;
